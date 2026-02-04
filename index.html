@@ -6,7 +6,7 @@
     <title>Para ti ❤️</title>
     <style>
         body {
-            background-color: #ffe6e6; /* Fondo rosado */
+            background-color: #ffe6e6;
             font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
@@ -15,7 +15,7 @@
             height: 100vh;
             margin: 0;
             text-align: center;
-            overflow: hidden; /* Para que no aparezcan barras de scroll */
+            overflow: hidden;
         }
 
         img {
@@ -40,4 +40,62 @@
             margin-top: 20px;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap; /* Para que se adapte a celulares */
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: white;
+            touch-action: manipulation;
+        }
+
+        #btnSi {
+            background-color: #28a745;
+        }
+
+        #btnNo {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="imagen" src="minion.gif" alt="Minion triste">
+
+    <h1 id="texto">¿Quieres ser mi San Valentín?</h1>
+    
+    <div class="botones">
+        <button id="btnSi" onclick="dijoSi()">¡SÍ! ❤️</button>
+        <button id="btnNo" onclick="dijoNo()">No</button>
+    </div>
+
+    <script>
+        let escala = 1;
+
+        function dijoNo() {
+            escala += 0.5;
+            document.getElementById("btnSi").style.transform = `scale(${escala})`;
+            
+            const frases = ["¿Seguro?", "¿En serio?", "¡Por favor!", "¡Mira mi carita!", "¡Voy a llorar!"];
+            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById("btnNo").innerText = fraseAleatoria;
+        }
+
+        function dijoSi() {
+            // AHORA SÍ: Busca "celebracion.gif" (sin tilde) para que coincida con tu archivo
+            document.getElementById("imagen").src = "celebracion.gif";
+            document.getElementById("texto").innerText = "¡SABÍA QUE DIRÍAS QUE SÍ! 🎉";
+            
+            document.getElementById("btnSi").style.display = "none";
+            document.getElementById("btnNo").style.display = "none";
+            document.body.style.backgroundColor = "#fff0f5";
+        }
+    </script>
+</body>
+</html>
